@@ -6,7 +6,7 @@ document.getElementById("weatherForm").addEventListener("submit", async function
   const weatherResult = document.getElementById("weatherResult");
 
   try {
-    const res = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&units=metric&appid=e3b2613ad5c1b496e1f0c7535e8e0d83`)
+    const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&units=metric&appid=e3b2613ad5c1b496e1f0c7535e8e0d83`)
 
     if(!res.ok) {
       weatherResult.innerHTML = `<p>No data available</p>`
