@@ -1,0 +1,231 @@
+:root {
+    color-scheme: light;
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #18324b;
+    background: #eaf4fb;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    min-height: 100vh;
+    min-height: 100svh;
+    align-items: center;
+    justify-content: center;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 40px 20px;
+    background:
+        radial-gradient(ellipse at 12% 12%, rgba(103, 210, 226, 0.5), transparent 33%),
+        radial-gradient(ellipse at 88% 82%, rgba(119, 157, 242, 0.38), transparent 35%),
+        linear-gradient(135deg, #eaf7fc 0%, #d9eafa 48%, #e8e7fb 100%);
+}
+
+body::before,
+body::after {
+    position: fixed;
+    z-index: -1;
+    width: 250px;
+    height: 250px;
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    border-radius: 50%;
+    content: "";
+    pointer-events: none;
+}
+
+body::before {
+    top: -95px;
+    right: 12%;
+    box-shadow: 0 0 0 28px rgba(255, 255, 255, 0.08), 0 0 0 58px rgba(255, 255, 255, 0.06);
+}
+
+body::after {
+    bottom: -150px;
+    left: 7%;
+    width: 320px;
+    height: 320px;
+    box-shadow: 0 0 0 30px rgba(255, 255, 255, 0.08);
+}
+
+.container {
+    width: min(100%, 510px);
+    padding: clamp(28px, 6vw, 46px);
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    border-radius: 28px;
+    background: rgba(255, 255, 255, 0.82);
+    box-shadow: 0 24px 70px rgba(49, 87, 125, 0.17), 0 4px 14px rgba(49, 87, 125, 0.08);
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
+    animation: fade-in 700ms ease both;
+}
+
+h1 {
+    margin: 0 0 14px;
+    color: #173a5b;
+    font-size: clamp(2rem, 6vw, 2.65rem);
+    font-weight: 750;
+    letter-spacing: -0.055em;
+    line-height: 1.08;
+}
+
+.container > p {
+    margin: 0 0 28px;
+    color: #687d90;
+    font-size: 0.94rem;
+    line-height: 1.65;
+}
+
+form {
+    display: grid;
+    gap: 13px;
+}
+
+input {
+    width: 100%;
+    min-height: 52px;
+    padding: 0 16px;
+    border: 1px solid #d8e5ef;
+    border-radius: 13px;
+    outline: none;
+    background: rgba(248, 251, 254, 0.9);
+    color: #18324b;
+    font: inherit;
+    transition: border-color 180ms ease, box-shadow 180ms ease, background 180ms ease;
+}
+
+input::placeholder {
+    color: #91a2b1;
+}
+
+input:focus {
+    border-color: #4ba9d2;
+    background: #fff;
+    box-shadow: 0 0 0 4px rgba(75, 169, 210, 0.15);
+}
+
+button {
+    min-height: 53px;
+    margin-top: 3px;
+    padding: 12px 18px;
+    border: 0;
+    border-radius: 13px;
+    background: linear-gradient(110deg, #238fc2, #467ce0);
+    box-shadow: 0 8px 18px rgba(49, 126, 197, 0.24);
+    color: #fff;
+    cursor: pointer;
+    font: inherit;
+    font-size: 1rem;
+    font-weight: 700;
+    transition: transform 180ms ease, box-shadow 180ms ease, filter 180ms ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 11px 23px rgba(49, 126, 197, 0.32);
+    filter: saturate(1.12);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+button:focus-visible {
+    outline: 3px solid rgba(35, 143, 194, 0.35);
+    outline-offset: 3px;
+}
+
+#weatherResult:empty {
+    display: none;
+}
+
+#weatherResult:not(:empty) {
+    margin-top: 24px;
+}
+
+#weatherResult > p {
+    margin: 0;
+    padding: 14px 16px;
+    border: 1px solid #f2d8d4;
+    border-radius: 12px;
+    background: #fff6f3;
+    color: #9d4f43;
+    font-size: 0.95rem;
+}
+
+.weather-box {
+    padding: 22px;
+    border: 1px solid #dcecf4;
+    border-radius: 20px;
+    background: linear-gradient(145deg, #f1faff, #f8f7ff);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    animation: fade-in 400ms ease both;
+}
+
+.weather-box h2 {
+    margin: 0 0 15px;
+    color: #1d5278;
+    font-size: 1.25rem;
+    letter-spacing: -0.025em;
+}
+
+.weather-box p {
+    margin: 0;
+    padding: 9px 0;
+    border-top: 1px solid rgba(191, 212, 227, 0.62);
+    color: #587084;
+    font-size: 0.9rem;
+    line-height: 1.45;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 520px) {
+    body {
+        align-items: flex-start;
+        padding: 24px 14px;
+    }
+
+    .container {
+        padding: 28px 22px;
+        border-radius: 23px;
+    }
+
+    .container > p {
+        font-size: 0.9rem;
+    }
+
+    .weather-box {
+        padding: 18px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
